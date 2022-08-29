@@ -28,7 +28,7 @@ const addProduct = async () => {
     renderProductList(await getProductsList());
     setTimeout(() => {
       clearProductInfo();
-    }, 1500);
+    }, 200);
   }
 };
 const editProduct = async (product_id) => {
@@ -46,7 +46,7 @@ const updateProduct = async () => {
     renderProductList(await getProductsList());
     setTimeout(() => {
       clearProductInfo();
-    }, 1500);
+    }, 200);
   }
 };
 const deleteProduct = async (product_id) => {
