@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admiin Page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css"
+      integrity="sha512-XWTTruHZEYJsxV3W/lSXG1n3Q39YIWOstqvmFsdNEEQfHoZ6vm6E9GK2OrF6DSJSpIbRbi+Nn0WDPID9O7xB2Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main style.css -->
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+  </head>
+  <body class="bg-dark">
+    <header class="container">
+      <nav class="navbar navbar-dark border-2 border-white bg-dark">
+        <!-- Navbar content -->
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Bootcamp 04</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <h1 class="my-5 fs-1 text-light">Thực hành Javascript - Axios</h1>
+    </header>
+    <div class="container py-3">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <button
+            id="nav-product"
+            class="nav-link active"
+            data-bs-toggle="tab"
+            data-bs-target="#productList"
+            type="button"
+            role="tab"
+            aria-controls="productList"
+            aria-selected="true"
+          >
+            Danh Sách Sản Phẩm
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            id="nav-user"
+            class="nav-link"
+            data-bs-toggle="tab"
+            data-bs-target="#userList"
+            type="button"
+            role="tab"
+            aria-controls="userList"
+            aria-selected="true"
+          >
+            Danh Sách Người Dùng
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            id="nav-thongKe"
+            class="nav-link"
+            data-bs-toggle="tab"
+            data-bs-target="#thongKe"
+            type="button"
+            role="tab"
+            aria-controls="thongKe"
+            aria-selected="true"
+          >
+            Thống Kê
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content py-3">
+        <!-- PRODUCT LIST -->
+        <div
+          id="productList"
+          class="tab-pane in active show"
+          role="tabpanel"
+          aria-labelledby="nav-product"
+          tabindex="0"
+        >
+          <div class="row">
+            <div class="col-md-8">
+              <!-- BEGIN BUTTOM THÊM MỚI -->
+              <button
+                id="toggle-product-modal"
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#productModal"
+              >
+                <i class="fa fa-plus mr-1"></i>
+                Thêm Mới
+              </button>
+              <!-- END BUTTON THÊM MỚI -->
+            </div>
+            <div class="col-md-4">
+              <!-- BEGIN TÌM KIẾM -->
+              <div class="input-group mb-3">
+                <input
+                  id="inputTK"
+                  type="text"
+                  class="form-control"
+                  placeholder="Nhập từ khóa"
+                  aria-label="Recipient's username"
+                  aria-describedby="basic-addon2"
+                />
+                <span
+                  id="search-btn"
+                  type="button"
+                  class="input-group-text"
+                  id="basic-addon2"
+                  ><i class="fa fa-search"></i
+                ></span>
+              </div>
+              <!-- END TÌM KIẾM -->
+            </div>
+          </div>
+          <!-- <div class="clear-fix"></div> -->
+          <div class="tblSanPham" id="tblSanPham">
+            <!-- BEGIN TABLE NGƯỜI DÙNG -->
+            <table
+              class="table table-bordered table-dark table-striped table-hover"
+            >
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Tên Sản Phẩm</th>
+                  <th>Giá</th>
+                  <th>Hình Ảnh</th>
+                  <th>Mô Tả</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="productTable"></tbody>
+            </table>
+            <!-- END TABLE NGƯỜI DÙNG -->
+          </div>
+          <br />
+        </div>
+        <!-- USER LIST -->
+        <div
+          id="userList"
+          class="tab-pane fade"
+          role="tabpanel"
+          aria-labelledby="nav-user"
+          tabindex="0"
+        >
+          <p class="text-muted">Updating...</p>
+        </div>
+        <!-- STATISTICS -->
+        <div
+          id="thongKe"
+          class="tab-pane fade"
+          role="tabpanel"
+          aria-labelledby="nav-thongKe"
+          tabindex="0"
+        >
+          <p class="text-muted">Updating...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT MODAL -->
+    <div
+      class="modal fade"
+      id="productModal"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Thông Tin Sản Phẩm</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Tên Sản Phẩm</label>
+              <input
+                id="product-name"
+                class="form-control"
+                placeholder="Nhập vào tên sản phẩm"
+              />
+            </div>
+            <div class="form-group">
+              <label>Giá</label>
+              <input
+                id="product-price"
+                class="form-control"
+                placeholder="Nhập vào giá"
+              />
+            </div>
+            <div class="form-group">
+              <label>Hình Ảnh</label>
+              <input
+                id="product-image"
+                class="form-control"
+                placeholder="Nhập vào hình sản phẩm"
+              />
+            </div>
+            <div class="form-group">
+              <label>Mô tả</label>
+              <textarea
+                class="form-control"
+                name=""
+                id="product-desc"
+                cols="30"
+                rows="10"
+                placeholder="Nhập vào mô tả"
+              ></textarea>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button
+              id="add-btn-product"
+              onclick=""
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+            >
+              Thêm Sản Phẩm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.bundle.min.js"
+      integrity="sha512-9GacT4119eY3AcosfWtHMsT5JyZudrexyEVzTBWV3viP/YfB9e2pEy3N7WXL3SV6ASXpTU0vzzSxsbfsuUH4sQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+      integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
