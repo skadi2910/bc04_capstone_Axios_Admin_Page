@@ -1,5 +1,11 @@
 import Product from "../model/product.model.js";
-
+import { validator } from "../../../validator/validator.js";
+import {
+  ERROR_DESC,
+  ERROR_IMG,
+  ERROR_NAME,
+  ERROR_PRICE,
+} from "../../../constants/constant.js";
 export const renderProductList = (productList) => {
   let contentHtml = "";
   for (const [index, item] of productList.entries()) {
@@ -15,7 +21,7 @@ const renderProductItem = (index, data) => {
                 <td>${data.name}</td>
                 <td>${data.price}</td>
                 <td>
-                    <img src=${data.image} alt="${data.name}"
+                    <img src=${data.image} alt=${data.name}
                     class="img-fluid" style="width: 12rem ; height: 12rem"/>
                 </td>
                 <td>${data.description}</td>
@@ -57,4 +63,29 @@ export const clearProductInfo = () => {
   document.getElementById("product-price").value = "";
   document.getElementById("product-image").value = "";
   document.getElementById("product-desc").value = "";
+  ERROR_NAME.style.display = "none";
+  ERROR_PRICE.style.display = "none";
+  ERROR_IMG.style.display = "none";
+  ERROR_DESC.style.display = "none";
+};
+
+export const validateInput = (item) => {
+  const isValidName = validator.checkEmptyString(
+    item.name,
+    ERROR_NAME,
+    "Không được rỗng"
+  );
+  const isValidPrice =
+    validator.checkEmptyString(item.price, ERROR_PRICE, "Không được rỗng") &&
+    validator.checkNumber(item.price * 1, ERROR_PRICE, "Phải là số");
+  const isValidImage =
+    validator.checkEmptyString(item.image, ERROR_IMG, "Không được rỗng") &&
+    validator.checkImage(item.image, ERROR_IMG, "Phải là đuôi .png, .jpg,...");
+  const isValidDesc = validator.checkEmptyString(
+    item.description,
+    ERROR_DESC,
+    "Không được rỗng"
+  );
+
+  return isValidName && isValidPrice && isValidImage && isValidDesc;
 };
